@@ -12,6 +12,8 @@ const Navbar = () => {
   const [theme, setTheme] = useState(oldTheme);
   const [isDashboardClicked, setIsDashboardClicked] = useState(false);
 
+  console.log(user)
+
   const { pathname } = useLocation();
 
   console.log(pathname);
@@ -58,7 +60,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed bg-white dark:bg-dark_bg dark:text-white w-full top-0 left-0 py-4 px-2 max-h-20 z-10 border-b select-none">
+    <div className="fixed bg-white dark:bg-dark_bg dark:text-white w-full top-0 left-0 py-4 px-2 max-h-20 z-10 border-b border-gray dark:border-white/10  select-none">
       <div className="max-w-[1170px] mx-auto flex justify-between items-center">
         <div>
           <Link to={"/"}>
@@ -73,7 +75,7 @@ const Navbar = () => {
           <div className="flex items-center justify-center mx-4 gap-5">
             <Link
               to={"/"}
-              className={`py-2 px-3 text-black rounded-lg ${
+              className={`py-2 px-3 text-black dark:text-white rounded-lg ${
                 pathname === "/" ? "bg-gray-800 text-white" : ""
               }`}
             >
@@ -172,18 +174,27 @@ const Navbar = () => {
             </div>
             {!user ? (
               <Link
-                className="py-2 px-[20px] bg-black dark:bg-cyan-300 text-white rounded-full"
+                className="py-2 px-[20px] bg-black dark:bg-dark_button text-white rounded-full"
                 to={"/login"}
               >
                 Login
               </Link>
             ) : (
+              <>
+              <div
+                className="rounded-full size-10"
+              >
+                <img className="rounded-full cursor-pointer" src={user?.photoURL} alt="" />
+              </div>
+
               <button
                 onClick={handleSignOut}
                 className="py-2 px-[20px] bg-black dark:bg-dark_button text-white rounded-full cursor-pointer"
               >
                 Logout
               </button>
+              </>
+              
             )}
           </div>
         </div>

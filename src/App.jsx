@@ -10,23 +10,23 @@ import Navbar from './shared/Navbar/Navbar';
 import ErrorPage from './pages/Error/ErrorPage';
 import Footer from './shared/Footer/Footer';
 import Services from './pages/Services/Services';
-// import Loader from './utility/Loader';
-// import { AuthContext } from './providers/AuthProvider';
+import { AuthContext } from './providers/AuthProvider';
+import Loader from './utility/Loader';
 
 
 function App() {
-  // const {loading} = useContext(AuthContext);
+  const {loading} = useContext(AuthContext);
   const [isErrorPage, setIsErrorPage] = useState(false);
 
-  // if(loading){
-  //   return <Loader />
-  // }
+  if(loading){
+    return <Loader />
+  }
 
   return (
     <BrowserRouter>
     <Toaster />
-     <div className=''>
-     <div className="main mx-auto max-w-[1170px] ">
+     <div className='bg-white dark:bg-dark_bg mt-16'>
+     <div className="main mx-auto max-w-[1170px]">
       {!isErrorPage && <Navbar />}
        <div>
        <Routes>
@@ -39,9 +39,9 @@ function App() {
 
          <Route path="*" element={<ErrorPage setIsErrorPage={setIsErrorPage} message={"The following route is not found"} />} />
        </Routes>
-       {!isErrorPage && <Footer />}
        </div>
      </div>
+     {!isErrorPage && <Footer />}
      </div>
    </BrowserRouter>
   )

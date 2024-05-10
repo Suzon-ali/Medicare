@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="text-black px-4 py-8 mt-10">
-      <div className="max-w-[1170px] mx-auto">
+    <footer className="bg-black/5 dark:bg-dark_bg text-black dark:text-white/50 px-4 py-8 mt-10 border-white/10 border-t">
+      <div className="max-w-[1170px] mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
@@ -42,7 +42,7 @@ function Footer() {
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
-            <p className="text-gray-400">123 Maple Avenue<br />Cityville, State 12345<br />Phone: (123) 456-7890<br />Email: contact@Craftify.com</p>
+            <p className="text-gray-400 dark:text-white/60">123 Maple Avenue<br />Cityville, State 12345<br />Phone: (123) 456-7890<br />Email: contact@Craftify.com</p>
           </div>
         </div>
         <hr className="my-8 border-gray-700" />
