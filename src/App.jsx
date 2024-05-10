@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+import { Toaster } from 'react-hot-toast'
+import { useContext, useState } from 'react';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import Navbar from './shared/Navbar/Navbar';
+import ErrorPage from './pages/Error/ErrorPage';
+import Footer from './shared/Footer/Footer';
+import Services from './pages/Services/Services';
+// import Loader from './utility/Loader';
+// import { AuthContext } from './providers/AuthProvider';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const {loading} = useContext(AuthContext);
+  const [isErrorPage, setIsErrorPage] = useState(false);
+
+  // if(loading){
+  //   return <Loader />
+  // }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+    <Toaster />
+     <div className=''>
+     <div className="main mx-auto max-w-[1170px] ">
+      {!isErrorPage && <Navbar />}
+       <div>
+       <Routes>
+         <Route path="/" element={<Home />} />
+         <Route path="/login" element={<Login />} />
+         <Route path="/register" element={<Register />} />
+         <Route path="/services" element={<Services />} />
+
+
+
+         <Route path="*" element={<ErrorPage setIsErrorPage={setIsErrorPage} message={"The following route is not found"} />} />
+       </Routes>
+       {!isErrorPage && <Footer />}
+       </div>
+     </div>
+     </div>
+   </BrowserRouter>
   )
 }
 
