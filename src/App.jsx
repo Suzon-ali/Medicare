@@ -41,7 +41,7 @@ function App() {
     <BrowserRouter>
     <Toaster />
      <div className='bg-white dark:bg-dark_bg'>
-     <div className="main mx-auto">
+     <div className="main mx-auto px-2 lg:px-0">
       {!isErrorPage && <Navbar />}
        <div>
        <Routes>

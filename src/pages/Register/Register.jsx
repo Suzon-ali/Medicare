@@ -66,8 +66,8 @@ function Register() {
       <Helmet>
         <title>Medicare | Register</title>
       </Helmet>
-      <div className="max-w-[1170px] mx-auto flex justify-center items-center h-auto pt-14 mt-16">
-        <div className="w-full max-w-md p-8 rounded-lg">
+      <div className="max-w-[1170px] mx-auto flex-col-reverse lg:flex-row flex justify-center items-center h-auto pt-14 mt-16">
+        <div className="w-full max-w-md p-2 rounded-lg">
         <div className="mb-8">
             <h2 className="text-4xl font-bold text-gray-800 dark:text-dark_button  text-center">
               Register

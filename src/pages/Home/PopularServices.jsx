@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import ServiceCard from "./ServiceCard";
 
-const popularSerices = [
+export const popularSerices = [
     {
       "imgURL": "https://i.postimg.cc/6pF8pKm7/image.png",
       "serviceName": "General Checkup",

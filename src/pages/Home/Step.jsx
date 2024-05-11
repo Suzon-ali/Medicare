@@ -3,7 +3,7 @@ export const Step = () => {
     return (
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
 
-<h1 className="text-5xl font-extrabold dark:text-white/70">
+<h1 className="text-3xl md:text-5xl font-extrabold dark:text-white/70 mb-3">
             Why use <span className="">Medi</span>
             <span className="text-dark_button">Care?</span>
           </h1>
@@ -185,7 +185,7 @@ export const Step = () => {
               </div>
             </div>
           </div>
-          <div className="relative rounded-full border overflow-hidden">
+          <div className="relative   overflow-hidden">
             <img
               className="inset-0 object-top translate-y-10 overflow-hidden w-full dark:shadow-lg h-96 lg:absolute lg:h-full"
               src="https://i.postimg.cc/T3j1FmRk/image-removebg-preview.png"

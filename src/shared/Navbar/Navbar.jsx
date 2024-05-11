@@ -51,7 +51,9 @@ const Navbar = () => {
 
   // Function to handle menu close
   const handleMenuClose = () => {
-    setIsMenuOpen(false);
+    if(isMenuOpen === true){
+      setIsMenuOpen(false);
+    }
   };
 
   //Function to handle dashboard click
@@ -72,16 +74,16 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed bg-white dark:bg-dark_bg dark:text-white w-full top-0 left-0 py-4 px-2 max-h-20 z-10 border-b border-gray dark:border-white/10  select-none">
+    <div className="fixed bg-white dark:bg-dark_bg dark:text-white w-full top-0 left-0 py-5 px-2 max-h-20 z-10 border-b border-gray dark:border-white/10  select-none">
       <div className="max-w-[1170px] mx-auto flex justify-between items-center">
         <div>
           <Link to={"/"} className="font-bold text-2xl">
             <span className="">Medi</span><span className="text-dark_button">Care</span>
           </Link>
         </div>
-        <div className="flex gap-2">
-          <div className="flex items-center justify-center mx-4 gap-5">
-            <Link
+        <div className={`absolute ${isMenuOpen ===false ? '-top-72' : 'top-16'} left-0 py-5 w-full md:w-auto md:py-0 md:static md:flex gap-2 bg-white dark:bg-dark_bg border-b dark:border-white/10 md:border-none`}>
+          <div className="flex items-center justify-between md:justify-center mx-4 md:gap-5 ">
+            <Link onClick={handleMenuClose}
               to={"/"}
               className={`py-2 px-3 text-black dark:text-white rounded-lg ${
                 pathname === "/" ? "bg-gray-800 text-white" : ""
@@ -90,7 +92,7 @@ const Navbar = () => {
               Home
             </Link>
 
-            <Link
+            <Link onClick={handleMenuClose}
               to={"/services"}
               className={`py-2 px-3 text-black dark:text-white rounded-lg ${
                 pathname === "/services" ? "bg-gray-800 text-white" : ""
@@ -101,7 +103,7 @@ const Navbar = () => {
 
             {user && (
               <div ref={dropdownRef} className="relative">
-                <div onClick={handleDashboardClick} className=" px-4 py-2 rounded-lg hover:bg-gray-800 cursor-pointer hover:text-white flex items-center gap-1">
+                <div onClick={handleDashboardClick} className=" px-4 py-2 rounded-lg hover:bg-gray-800 cursor-pointer hover:text-white flex items-center gap-1 ">
                   Dashboard{" "}
                   <span>
                     <svg
@@ -118,7 +120,7 @@ const Navbar = () => {
                     </svg>
                   </span>
                 </div>
-                {isDashboardClicked && <div onClick={()=>setIsDashboardClicked(false)} className="dropdown flex flex-col absolute bg-[#0d1426] text-nowrap top-12 w-40 border border-1 border-gray-500 rounded-lg overflow-hidden">
+                {isDashboardClicked && <div onClick={()=>{setIsDashboardClicked(false); setIsMenuOpen(false)}} className="dropdown flex flex-col absolute bg-[#0d1426] text-nowrap top-12 md:w-40 border border-1 border-gray-500 rounded-lg overflow-hidden">
                   <Link
                     className="p-2 hover:bg-gray-800 text-white"
                     to={"/add-service"}
@@ -148,7 +150,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-between md:justify-start px-8 md:px-0 mt-2 md:mt-0 gap-4">
             <div>
               {theme === "dark" ? (
                 <svg
@@ -206,6 +208,11 @@ const Navbar = () => {
             )}
           </div>
         </div>
+
+        <div onClick={handleMenu} className="md:hidden">
+          Menu
+        </div>
+
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import { Link } from "react-router-dom";
 
@@ -40,7 +41,7 @@ const ServiceCard = ({ service }) => {
            <p>{providerName}</p>
         </div>
         <Link to={"/id"}>
-          <button className="bg-dark_bg dark:bg-dark_button text-white p-2 my-2 rounded-lg w-full">
+          <button className="bg-dark_bg dark:bg-dark_button text-white p-2 my-2 rounded-lg w-full hover:brightness-110">
             View Details
           </button>
         </Link>

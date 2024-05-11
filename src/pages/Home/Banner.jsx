@@ -579,12 +579,12 @@ const Banner = () => {
         style={{ backgroundImage: `url(${bannerBG})` }}
         className="bg-no-repeat bg-center bg-cover h-auto w-full pb-20 "
       >
-        <div className="w-full h-full pt-20 bg-blue-100/10 dark:bg-transparent py-10">
-          <h1 className="text-center text-5xl font-extrabold">
+        <div className="w-full h-full md:pt-20 bg-blue-100/10 dark:bg-transparent py-10">
+          <h1 className="text-center text-3xl lg:text-5xl font-extrabold">
             Complete Health Solution With <span className="">Medi</span>
             <span className="text-dark_button">Care</span>
           </h1>
-          <p className="text-center py-5 text-black/70 dark:text-white leading-8 text-xl">
+          <p className="text-center py-5 text-black/70 dark:text-white md:leading-8  md:text-xl">
             Consulting a healthcare professional, buying medicine, ordering lab
             tests <br />
             and improving your health and wellbeing, all can be done 24/7 with

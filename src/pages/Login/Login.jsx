@@ -52,8 +52,8 @@ function Login() {
       <Helmet>
         <title>Medicare | Login</title>
       </Helmet>
-      <div className="max-w-[1170px] mx-auto flex justify-center items-center h-auto py-10 mt-16">
-        <div className="lg:w-1/2 max-w-lg p-8 rounded-lg">
+      <div className="max-w-[1170px] mx-auto flex-col-reverse flex lg:flex-row justify-center items-center h-auto py-10 mt-16">
+        <div className="w-full lg:w-1/2 max-w-lg p-2 rounded-lg">
           <div className="mb-8">
             <h2 className="text-4xl font-bold text-gray-800 dark:text-dark_button  text-center">
               Login
