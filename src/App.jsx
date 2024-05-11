@@ -25,8 +25,8 @@ function App() {
   return (
     <BrowserRouter>
     <Toaster />
-     <div className='bg-white dark:bg-dark_bg mt-16'>
-     <div className="main mx-auto max-w-[1170px]">
+     <div className='bg-white dark:bg-dark_bg'>
+     <div className="main mx-auto">
       {!isErrorPage && <Navbar />}
        <div>
        <Routes>

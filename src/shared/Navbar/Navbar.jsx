@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../providers/AuthProvider";
+import logo from '../../assets/image (1).png'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,12 +64,8 @@ const Navbar = () => {
     <div className="fixed bg-white dark:bg-dark_bg dark:text-white w-full top-0 left-0 py-4 px-2 max-h-20 z-10 border-b border-gray dark:border-white/10  select-none">
       <div className="max-w-[1170px] mx-auto flex justify-between items-center">
         <div>
-          <Link to={"/"}>
-            <img
-              className="w-32"
-              src="https://learnwithsumit.com/_next/static/media/lws-logo-light.ae7b3c3a.svg"
-              alt=""
-            />
+          <Link to={"/"} className="font-bold text-2xl">
+            <span className="">Medi</span><span className="text-dark_button">Care</span>
           </Link>
         </div>
         <div className="flex gap-2">

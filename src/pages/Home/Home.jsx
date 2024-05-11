@@ -1,7 +1,10 @@
+import Banner from "./Banner"
 
 const Home = () => {
   return (
-    <div >Home</div>
+    <div className="mt-[70px]">
+    <Banner />
+    </div>
   )
 }
 
