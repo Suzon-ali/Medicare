@@ -7,7 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import loginAnimation from "../../assets/login-aUnT5PRo2P.svg";
 
 function Register() {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [passwordError, setPasswordError] = useState("");
@@ -57,12 +57,16 @@ function Register() {
     setShowPassword(!showPassword);
   }
 
+  if(user){
+    navigate('/')
+  }
+
   return (
     <>
       <Helmet>
         <title>Medicare | Register</title>
       </Helmet>
-      <div className="flex justify-center items-center h-auto pt-14 mt-16">
+      <div className="max-w-[1170px] mx-auto flex justify-center items-center h-auto pt-14 mt-16">
         <div className="w-full max-w-md p-8 rounded-lg">
         <div className="mb-8">
             <h2 className="text-4xl font-bold text-gray-800 dark:text-dark_button  text-center">
@@ -212,7 +216,7 @@ function Register() {
           <p className="text-red-400">{passwordError}</p>
         </div>
         <div className="lg:w-1/2">
-          <img className="w-full" src={loginAnimation} alt="" />
+          <img data-aos="fade-up" className="w-full" src={loginAnimation} alt="" />
         </div>
       </div>
     </>

@@ -577,9 +577,9 @@ const Banner = () => {
     <div className="text-black dark:text-white pt-4">
       <div
         style={{ backgroundImage: `url(${bannerBG})` }}
-        className="bg-no-repeat bg-center bg-cover h-[550px] w-full"
+        className="bg-no-repeat bg-center bg-cover h-auto w-full pb-20 "
       >
-        <div className="w-full h-full pt-20 bg-blue-100/10 dark:bg-transparent">
+        <div className="w-full h-full pt-20 bg-blue-100/10 dark:bg-transparent py-10">
           <h1 className="text-center text-5xl font-extrabold">
             Complete Health Solution With <span className="">Medi</span>
             <span className="text-dark_button">Care</span>
@@ -590,13 +590,13 @@ const Banner = () => {
             and improving your health and wellbeing, all can be done 24/7 with
             MediCare!
           </p>
-          <div className="flex justify-center items-center gap-5 w-10/12 mx-auto mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-10/12 mx-auto mt-10">
             {cardsArray &&
               cardsArray.map((card) => {
                 return (
                   <div
                     key={card.title}
-                    className="bg-white dark:bg-button_bg/70 shadow-sm border dark:border-none border-gray-50 min-h-56 w-64 rounded-3xl text-center flex justify-center items-center flex-col cursor-pointer p-4 hover:scale-110 hover:-translate-y-2 transition-all duration-300"
+                    className="bg-white w-full dark:bg-button_bg/70 shadow-sm border dark:border-none border-gray-50 min-h-56  rounded-3xl text-center flex justify-center items-center flex-col cursor-pointer p-4 hover:scale-110 hover:-translate-y-2 transition-all duration-300"
                   >
                     <dir className="p-4">{card.image}</dir>
                     <h2 className="font-medium text-nowrap">{card.title}</h2>

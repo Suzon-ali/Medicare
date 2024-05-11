@@ -2,7 +2,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Toaster } from 'react-hot-toast'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
@@ -17,11 +17,21 @@ import ServiceToDo from './pages/ServiceToDo/ServiceToDo';
 // import { AuthContext } from './providers/AuthProvider';
 // import Loader from './utility/Loader';
 import PrivateRoute from './privateRoutes/PrivateRoute';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 
 function App() {
   // const {loading} = useContext(AuthContext);
   const [isErrorPage, setIsErrorPage] = useState(false);
+
+  useEffect(() => {
+    Aos.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false
+    });
+  }, []);
 
   // if(loading){
   //   return <Loader />
