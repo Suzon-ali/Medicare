@@ -60,9 +60,9 @@ function Register() {
   return (
     <>
       <Helmet>
-        <title>Register</title>
+        <title>Medicare | Register</title>
       </Helmet>
-      <div className="flex justify-center items-center h-auto pt-14">
+      <div className="flex justify-center items-center h-auto pt-14 mt-16">
         <div className="w-full max-w-md p-8 rounded-lg">
         <div className="mb-8">
             <h2 className="text-4xl font-bold text-gray-800 dark:text-dark_button  text-center">

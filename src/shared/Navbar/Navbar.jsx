@@ -1,23 +1,19 @@
 /* eslint-disable react/no-unknown-property */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../providers/AuthProvider";
-import logo from '../../assets/image (1).png'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, loading } = useContext(AuthContext);
   const oldTheme = localStorage.getItem("theme");
   const [theme, setTheme] = useState(oldTheme);
   const [isDashboardClicked, setIsDashboardClicked] = useState(false);
-
-  console.log(user)
+  const dropdownRef = useRef(null);
 
   const { pathname } = useLocation();
-
-  console.log(pathname);
 
   // Toggle between light and dark theme
   const toggleTheme = () => {
@@ -32,6 +28,21 @@ const Navbar = () => {
     console.log(oldTheme);
     document.documentElement.setAttribute("class", oldTheme);
   }, [theme]);
+
+  
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDashboardClicked(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   // Function to handle menu open/close
   const handleMenu = () => {
@@ -89,7 +100,7 @@ const Navbar = () => {
             </Link>
 
             {user && (
-              <div className="relative">
+              <div ref={dropdownRef} className="relative">
                 <div onClick={handleDashboardClick} className=" px-4 py-2 rounded-lg hover:bg-gray-800 cursor-pointer hover:text-white flex items-center gap-1">
                   Dashboard{" "}
                   <span>
@@ -107,7 +118,7 @@ const Navbar = () => {
                     </svg>
                   </span>
                 </div>
-                {isDashboardClicked && <div className="flex flex-col absolute bg-[#0d1426] text-nowrap top-12 w-40 border border-1 border-gray-500 rounded-lg overflow-hidden">
+                {isDashboardClicked && <div onClick={()=>setIsDashboardClicked(false)} className="dropdown flex flex-col absolute bg-[#0d1426] text-nowrap top-12 w-40 border border-1 border-gray-500 rounded-lg overflow-hidden">
                   <Link
                     className="p-2 hover:bg-gray-800 text-white"
                     to={"/add-service"}
@@ -123,7 +134,7 @@ const Navbar = () => {
 
                   <Link
                     className="p-2 hover:bg-gray-800 text-white "
-                    to={"/booked-service"}
+                    to={"/booked-services"}
                   >
                     Booked Service
                   </Link>
@@ -141,7 +152,7 @@ const Navbar = () => {
             <div>
               {theme === "dark" ? (
                 <svg
-                  className="cursor-pointer"
+                  className="cursor-pointer text-yellow-500"
                   onClick={toggleTheme}
                   stroke="currentColor"
                   fill="currentColor"
@@ -174,12 +185,12 @@ const Navbar = () => {
                 className="py-2 px-[20px] bg-black dark:bg-dark_button text-white rounded-full"
                 to={"/login"}
               >
-                Login
+                {loading ? "Athenticating.." : "Login"}
               </Link>
             ) : (
               <>
               <div
-                className="rounded-full size-10"
+                className="rounded-full size-10 overflow-hidden"
               >
                 <img className="rounded-full cursor-pointer" src={user?.photoURL} alt="" />
               </div>

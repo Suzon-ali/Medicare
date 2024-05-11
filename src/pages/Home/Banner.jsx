@@ -574,12 +574,12 @@ const cardsArray = [
 
 const Banner = () => {
   return (
-    <div className="text-black dark:text-white">
+    <div className="text-black dark:text-white pt-4">
       <div
         style={{ backgroundImage: `url(${bannerBG})` }}
         className="bg-no-repeat bg-center bg-cover h-[550px] w-full"
       >
-        <div className="w-full h-full pt-20">
+        <div className="w-full h-full pt-20 bg-blue-100/10 dark:bg-transparent">
           <h1 className="text-center text-5xl font-extrabold">
             Complete Health Solution With <span className="">Medi</span>
             <span className="text-dark_button">Care</span>
@@ -588,7 +588,7 @@ const Banner = () => {
             Consulting a healthcare professional, buying medicine, ordering lab
             tests <br />
             and improving your health and wellbeing, all can be done 24/7 with
-            DocTime!
+            MediCare!
           </p>
           <div className="flex justify-center items-center gap-5 w-10/12 mx-auto mt-10">
             {cardsArray &&
@@ -596,7 +596,7 @@ const Banner = () => {
                 return (
                   <div
                     key={card.title}
-                    className="bg-white dark:bg-button_bg/70 shadow-sm border dark:border-none border-gray-50 min-h-56 w-64 rounded-3xl text-center flex justify-center items-center flex-col cursor-pointer p-4 hover:scale-105 transition-all duration-400"
+                    className="bg-white dark:bg-button_bg/70 shadow-sm border dark:border-none border-gray-50 min-h-56 w-64 rounded-3xl text-center flex justify-center items-center flex-col cursor-pointer p-4 hover:scale-110 hover:-translate-y-2 transition-all duration-300"
                   >
                     <dir className="p-4">{card.image}</dir>
                     <h2 className="font-medium text-nowrap">{card.title}</h2>
