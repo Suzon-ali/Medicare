@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet"
 import Banner from "./Banner"
 import DownloadApp from "./DownloadApp"
 import { Step } from "./Step"
+import PopularServices from "./PopularServices"
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
     <Banner />
     <DownloadApp />
     <Step />
+    <PopularServices />
     </div>
   )
 }

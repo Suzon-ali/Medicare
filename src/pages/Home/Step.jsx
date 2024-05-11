@@ -41,8 +41,8 @@ export const Step = () => {
                 <div className="w-px h-full bg-gray-300" />
               </div>
               <div className="pt-1 pb-8">
-                <p className="mb-2 text-lg font-bold">Comprehensive Coverage</p>
-                <p className="text-gray-700">
+                <p data-aos="fade-in" className="mb-2 text-lg font-bold">Comprehensive Coverage</p>
+                <p data-aos="fade-in" className="text-gray-700">
                 Enjoy peace of mind with coverage for hospital stays, doctor visits, preventive care, and prescription drugs.
                 </p>
               </div>
@@ -78,8 +78,8 @@ export const Step = () => {
                 <div className="w-px h-full bg-gray-300" />
               </div>
               <div className="pt-1 pb-8">
-                <p className="mb-2 text-lg font-bold">Affordability</p>
-                <p className="text-gray-700">
+                <p data-aos="fade-in" className="mb-2 text-lg font-bold">Affordability</p>
+                <p data-aos="fade-in" className="text-gray-700">
                 Access high-quality healthcare services at a cost that fits your budget.
                 </p>
               </div>
@@ -115,8 +115,8 @@ export const Step = () => {
                 <div className="w-px h-full bg-gray-300" />
               </div>
               <div className="pt-1 pb-8">
-                <p className="mb-2 text-lg font-bold">Access to Top Providers</p>
-                <p className="text-gray-700">
+                <p data-aos="fade-in" className="mb-2 text-lg font-bold">Access to Top Providers</p>
+                <p data-aos="fade-in" className="text-gray-700">
                 Benefit from a vast network of doctors, specialists, and hospitals for top-notch care.
                 </p>
               </div>
@@ -152,8 +152,8 @@ export const Step = () => {
                 <div className="w-px h-full bg-gray-300" />
               </div>
               <div className="pt-1 pb-8">
-                <p className="mb-2 text-lg font-bold">Preventive Care</p>
-                <p className="text-gray-700">
+                <p data-aos="fade-in" className="mb-2 text-lg font-bold">Preventive Care</p>
+                <p data-aos="fade-in" className="text-gray-700">
                 Stay healthy with screenings, vaccinations, and wellness visits focused on early detection and prevention.
                 </p>
               </div>
@@ -180,14 +180,14 @@ export const Step = () => {
                 </div>
               </div>
               <div className="pt-1">
-                <p className="mb-2 text-lg font-bold">Be Safe</p>
+                <p data-aos="fade-in" className="mb-2 text-lg font-bold text-dark_button">Be Safe</p>
                 <p className="text-gray-700" />
               </div>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative rounded-full border overflow-hidden">
             <img
-              className="inset-0 object-cover object-bottom w-full rounded h-96 lg:absolute lg:h-full"
+              className="inset-0 object-top translate-y-10 overflow-hidden w-full dark:shadow-lg h-96 lg:absolute lg:h-full"
               src="https://i.postimg.cc/T3j1FmRk/image-removebg-preview.png"
               alt=""
             />

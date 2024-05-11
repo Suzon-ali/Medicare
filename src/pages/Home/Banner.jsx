@@ -590,13 +590,13 @@ const Banner = () => {
             and improving your health and wellbeing, all can be done 24/7 with
             MediCare!
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-10/12 mx-auto mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-[1170px] mx-auto mt-10">
             {cardsArray &&
               cardsArray.map((card) => {
                 return (
                   <div
                     key={card.title}
-                    className="bg-white w-full dark:bg-button_bg/70 shadow-sm border dark:border-none border-gray-50 min-h-56  rounded-3xl text-center flex justify-center items-center flex-col cursor-pointer p-4 hover:scale-110 hover:-translate-y-2 transition-all duration-300"
+                    className="bg-white w-full dark:bg-button_bg/70 shadow-sm border dark:border-none border-gray-50 min-h-56  rounded-3xl text-center flex justify-center items-center flex-col cursor-pointer p-4 md:hover:scale-110 md:hover:-translate-y-2 transition-all duration-300"
                   >
                     <dir className="p-4">{card.image}</dir>
                     <h2 className="font-medium text-nowrap">{card.title}</h2>

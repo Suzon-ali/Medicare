@@ -9,7 +9,7 @@ export default {
     extend: {
       colors:{
         dark_bg: '#0b1122',
-        dark_button: '#0584c7',
+        dark_button: '#4185f4',
         button_bg: '#1f2937',
 
       }
