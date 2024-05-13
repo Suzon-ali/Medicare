@@ -2,15 +2,16 @@
 
 import { Link } from "react-router-dom";
 
-const ServiceCard = ({ service }) => {
+const ServiceCard2 = ({ service }) => {
   const { serviceName, imgURL, price, serviceArea, description, providerName, providerImage } = service || {};
 
   return (
-    <div className="shadow-sm border dark:border-none rounded-lg flex flex-col overflow-hidden dark:text-white/80 dark:bg-button_bg/40 lg:hover:scale-[103%] transition-transform duration-300">
-      <div >
+    <div className=" shadow-sm border dark:border-none rounded-lg md:flex overflow-hidden dark:text-white/80 dark:bg-button_bg/40 lg:hover:scale-[103%] transition-transform duration-300">
+      <div className="w-full md:w-5/12">
         <img className="w-full h-[300px] object-cover object-top" src={imgURL} alt="" />
+       
       </div>
-      <div className="p-4">
+      <div className="p-3 relative">
         <h3 className="text-lg font-bold text-dark_button">{serviceName}</h3>
         <p >
           <span  className="font-bold">Tk {price}</span>{" "}
@@ -31,17 +32,17 @@ const ServiceCard = ({ service }) => {
               ></path>
             </svg>
           </span>
-          <p className="min-h-16 lg:pr-20">{description}</p>
+          <p className=" lg:pr-20">{description}</p>
         </div>
-        <div className="-bottom-5 right-0  p-2">
-            Location: <span className="text-blue-400">{serviceArea}</span>
+        <div className="-bottom-5 right-0 text-blue-400 p-2">
+            Location: {serviceArea}
         </div>
-        <div className="flex items-center gap-2 py-2">
+        <div className="flex items-center gap-2">
            <img className="size-10 rounded-full overflow-hidden object-cover" src={providerImage} alt="" />
            <p>{providerName}</p>
         </div>
         <Link to={"/id"}>
-          <button className="bg-dark_bg dark:bg-dark_button text-white p-2 my-2 rounded-lg w-full hover:brightness-110">
+          <button className="md:absolute bottom-2 bg-dark_bg dark:bg-dark_button text-white p-2 my-2 rounded-lg w-fullhover:brightness-110">
             View Details
           </button>
         </Link>
@@ -50,4 +51,4 @@ const ServiceCard = ({ service }) => {
   );
 };
 
-export default ServiceCard;
+export default ServiceCard2;

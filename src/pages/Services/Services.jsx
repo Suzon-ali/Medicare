@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import { popularSerices } from "../Home/PopularServices";
-import ServiceCard from "../Home/ServiceCard";
+import ServiceCard2 from "../Home/ServiceCard2";
 
 const Services = () => {
   return (
@@ -14,10 +14,10 @@ const Services = () => {
             <span className="text-dark_button">Care</span>
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
+          <div className="grid grid-cols-1  gap-5 mt-10 md:px-10">
           {popularSerices &&
             popularSerices.slice(0,6).map((service) => {
-              return <ServiceCard key={service.id} service={service} />;
+              return <ServiceCard2 key={service.id} service={service} />;
             })}
         </div>
 

@@ -7,10 +7,10 @@ import { AuthContext } from "../../providers/AuthProvider";
 import googleImg from "../../assets/google.svg";
 
 function Login() {
-  const { signIn, signInWithGoogle , user} =
+  const { signIn, signInWithGoogle , user, setLoading} =
     useContext(AuthContext);
   const navigate = useNavigate();
-  const [lodingError, setLoginError] = useState("");
+  const [loginError, setLoginError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (e) => {
@@ -20,6 +20,8 @@ function Login() {
     const email = form.get("email");
     const password = form.get("password");
 
+    setLoginError('');
+
     signIn(email, password)
       .then(() => {
         navigate("/");
@@ -27,6 +29,7 @@ function Login() {
       })
       .catch((error) => {
         setLoginError(error.message);
+        setLoading(false);
       });
   };
 
@@ -173,7 +176,7 @@ function Login() {
                 Forgot Password?
               </a>
             </div>
-            {lodingError && <p className="text-red-400 py-2">{lodingError}</p>}
+            {loginError && <p className="text-red-400 py-2">{loginError}</p>}
             <div className="flex justify-center items-center space-x-4">
               <button
                 onClick={handleGoogleSignIn}

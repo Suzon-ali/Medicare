@@ -1,6 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import ServiceCard from "./ServiceCard";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from '../../providers/AuthProvider';
+import { useState } from "react";
 
 export const popularSerices = [
     {
@@ -107,6 +111,33 @@ export const popularSerices = [
 ;  
 
 const PopularServices = () => {
+  
+  const {setLoading} = useContext(AuthContext);
+  const [popularServices, setPopularServices] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/popular",{
+    })
+      .then((res) => {
+        setLoading(true);
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setPopularServices(data);
+        setTimeout(() => {
+          setLoading(false);
+        }, [1000]);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  }, [setLoading]);
+
+
   return (
     <div className=" bg-blue-100/10 dark:bg-transparent py-10">
       <div className="max-w-[1170px] mx-auto">
@@ -124,8 +155,8 @@ const PopularServices = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
-          {popularSerices &&
-            popularSerices.slice(0,6).map((service) => {
+          {popularServices &&
+            popularServices.slice(0,6).map((service) => {
               return <ServiceCard key={service.id} service={service} />;
             })}
         </div>

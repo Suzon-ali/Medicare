@@ -7,7 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import loginAnimation from "../../assets/login-aUnT5PRo2P.svg";
 
 function Register() {
-  const { createUser, user } = useContext(AuthContext);
+  const { createUser, user, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [passwordError, setPasswordError] = useState("");
@@ -46,6 +46,7 @@ function Register() {
           })
           .catch((error) => {
             toast.success(error.message);
+            setLoading(false);
           });
       })
       .catch((error) => {
