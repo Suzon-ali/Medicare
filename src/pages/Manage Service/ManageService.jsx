@@ -55,8 +55,10 @@ const ManageService = () => {
           services.map((service) => {
             return (
               <MyService
-                service={service}
-                key={service._id}
+              service={service}
+              key={service._id}
+              setServices={setServices}
+              services={services}
               />
             );
           })}

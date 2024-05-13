@@ -21,12 +21,7 @@ const AddService = () => {
     const providerName = user?.displayName;
     const providerEmail = user?.email;
     const providerImage = user?.photoURL;
-    const timeStamp = new Date();
-    const formatedDate = timeStamp.toLocaleDateString('en_US',{
-      month: 'short',
-      day: '2-digit',
-      year: 'numeric'
-    })
+    const timeStamp = Date.now();
 
     // Send data to backend
     axios
@@ -39,7 +34,7 @@ const AddService = () => {
         providerImage,
         providerEmail,
         providerName,
-        formatedDate
+        timeStamp
       })
       .then((res) => {
         const result = res.data;
