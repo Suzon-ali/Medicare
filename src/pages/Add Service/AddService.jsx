@@ -40,7 +40,8 @@ const AddService = () => {
         const result = res.data;
         if (result && result.insertedId) {
           toast.success("Data added successfully!");
-          form.reset;
+         
+          
         } else {
           toast.error("Failed to add data.");
         }

@@ -14,6 +14,7 @@ const ManageService = () => {
   const { user } = useContext(AuthContext);
   const { email } = user || {};
 
+
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_URL}/services?email=${email}`, {
       withCredentials: true,
@@ -29,9 +30,6 @@ const ManageService = () => {
     });
   }, [email]);
   
-
-  console.log('service', services)
-
   //decide what to render
 
   let content = "";
@@ -68,7 +66,7 @@ const ManageService = () => {
 
 
   return (
-    <div className="mt-16 pt-10 text-black dark:text-white/70">
+    <div className="mt-16 pt-10 text-black dark:text-white/70 min-h-[50dvh]">
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div>
