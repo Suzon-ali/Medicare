@@ -11,7 +11,7 @@ const ServiceCard2 = ({ service }) => {
         <img className="w-full h-[300px] object-cover object-top" src={imgURL} alt="" />
        
       </div>
-      <div className="p-3 relative">
+      <div className="p-3 relative w-full md:w-7/12">
         <h3 className="text-lg font-bold text-dark_button">{serviceName}</h3>
         <p >
           <span  className="font-bold">Tk {price}</span>{" "}

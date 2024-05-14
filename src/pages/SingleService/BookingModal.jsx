@@ -227,7 +227,7 @@ const BookingModal = ({service, setServices, setIsBookingModalOpen}) => {
                         type="submit"
                         className="dark:bg-blue-500 bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                       >
-                        Submit
+                        Purchase Now
                       </button>
                     </div>
                   </div>

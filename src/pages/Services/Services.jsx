@@ -60,10 +60,10 @@ const Services = () => {
   return (
     <div className="mt-16 pt-10 text-black dark:text-white/80">
       <Helmet>
-        <title>Medicare | Service</title>
+        <title>Medicare | All Services</title>
       </Helmet>
       <div className="max-w-[1170px] mx-auto">
-      <h1 className="text-center text-5xl font-extrabold">
+      <h1 className="text-center text-xl md:text-5xl font-extrabold">
             Browse All Services in <span className="">Medi</span>
             <span className="text-dark_button">Care</span>
           </h1>
