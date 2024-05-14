@@ -54,7 +54,7 @@ const ManageService = () => {
             return (
               <MyService
               service={service}
-              key={service._id}
+              key={service?._id}
               setServices={setServices}
               services={services}
               />
@@ -85,13 +85,13 @@ const ManageService = () => {
                     <th className="px-5 py-3 border-b-2 border-gray-200 dark:border-white/20 bg-gray-100  dark:text-white/50 dark:bg-button_bg/70 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                       Service Price
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 dark:border-white/20 bg-gray-100  dark:text-white/50 dark:bg-button_bg/70 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    <th className="px-5 py-3 border-b-2 border-gray-200 dark:border-white/20 bg-gray-100  dark:text-white/50 dark:bg-button_bg/70 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider ">
                       Added Date
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 dark:border-white/20 bg-gray-100  dark:text-white/50 dark:bg-button_bg/70 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                       Action
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 dark:border-white/20 bg-gray-100  dark:text-white/50 dark:bg-button_bg/70"></th>
+                    <th className="px-5 py-3 border-b-2 border-gray-200 dark:border-white/20 bg-gray-100  dark:text-white/50 dark:bg-button_bg/70 "></th>
                   </tr>
                 </thead>
                 <tbody>

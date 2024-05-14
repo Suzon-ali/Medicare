@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 
 import axios from "axios";
+import { useState } from "react";
 import Swal from "sweetalert2";
+import EditModal from "./EditModal";
 
 const MyService = ({ service, setServices }) => {
-  const { _id, imgURL, serviceName, Price, serviceArea, timeStamp } =
+  const { _id, imgURL, serviceName, price, serviceArea, timeStamp } =
     service || {};
+    const [isModalOpen, setIsModalOpen] = useState(false);
   const date = new Date(timeStamp);
   const newDate = date.toDateString();
 
@@ -45,6 +48,10 @@ const MyService = ({ service, setServices }) => {
     });
   };
 
+  const handleEditModal = () =>{
+    setIsModalOpen(true);
+  }
+
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-200 dark:border-white/20 bg-white  dark:text-white/50 dark:bg-button_bg/90 text-sm">
@@ -64,24 +71,24 @@ const MyService = ({ service, setServices }) => {
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-blue-300 text-sm dark:text-white/50 dark:bg-button_bg/90 dark:border-white/20">
         <p className="text-gray-900 whitespace-no-wrap dark:text-white/50">
-          <span className="font-bold">৳</span> {Price}
+          <span className="font-bold">৳</span> {price}
         </p>
         <p className="text-gray-600 whitespace-no-wrap dark:text-white/50">
           Taka
         </p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 dark:border-white/20 bg-white  dark:bg-blue-300 text-sm dark:text-white/50 dark:bg-button_bg/90">
+      <td className="px-5 py-5 border-b border-gray-200 dark:border-white/20 bg-white  dark:bg-blue-300 text-sm dark:text-white/50 dark:bg-button_bg/90 ">
         <p className="text-gray-600 whitespace-no-wrap dark:text-white/50">
           {newDate}
         </p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 dark:border-white/20 bg-white dark:bg-blue-300 text-sm space-x-2 dark:text-white/50 dark:bg-button_bg/90">
-        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+      <td className="px-5 py-5 border-b border-gray-200 dark:border-white/20 bg-white dark:bg-blue-300 text-sm space-x-2 dark:text-white/50 dark:bg-button_bg/90 ">
+        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight ">
           <span
             aria-hidden
             className="absolute inset-0 bg-green-500  rounded-full"
           ></span>
-          <button className="relative text-white">Edit</button>
+          <button onClick={handleEditModal} className="relative text-white">Edit</button>
         </span>
         <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
           <span
@@ -109,6 +116,7 @@ const MyService = ({ service, setServices }) => {
           </svg>
         </button>
       </td>
+      {isModalOpen && <EditModal service={service} setIsModalOpen={setIsModalOpen} setServices={setServices} />}
     </tr>
   );
 };

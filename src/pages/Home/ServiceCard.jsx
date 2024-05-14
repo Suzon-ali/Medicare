@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
-  const { serviceName, imgURL, price, serviceArea, description, providerName, providerImage } = service || {};
+  const { _id, serviceName, imgURL, price, serviceArea, description, providerName, providerImage } = service || {};
 
   return (
     <div className="shadow-sm border dark:border-none rounded-lg flex flex-col overflow-hidden dark:text-white/80 dark:bg-button_bg/40 lg:hover:scale-[103%] transition-transform duration-300">
@@ -40,7 +40,7 @@ const ServiceCard = ({ service }) => {
            <img className="size-10 rounded-full overflow-hidden object-cover" src={providerImage} alt="" />
            <p>{providerName}</p>
         </div>
-        <Link to={"/id"}>
+        <Link to={`/services/${_id}`}>
           <button className="bg-dark_bg dark:bg-dark_button text-white p-2 my-2 rounded-lg w-full hover:brightness-110">
             View Details
           </button>

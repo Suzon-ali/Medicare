@@ -19,6 +19,7 @@ import ServiceToDo from './pages/ServiceToDo/ServiceToDo';
 import PrivateRoute from './privateRoutes/PrivateRoute';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import SignleService from './pages/SingleService/SignleService';
 
 
 function App() {
@@ -49,6 +50,8 @@ function App() {
          <Route path="/login" element={<Login />} />
          <Route path="/register" element={<Register />} />
          <Route path="/services" element={<Services />} />
+
+         <Route path="/services/:id" element={<PrivateRoute><SignleService /></PrivateRoute>} />
 
          <Route path="/add-service" element={<PrivateRoute><AddService /></PrivateRoute>} />
          <Route path="/manage-service" element={<PrivateRoute><ManageService /></PrivateRoute>} />

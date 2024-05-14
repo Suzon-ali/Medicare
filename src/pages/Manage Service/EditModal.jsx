@@ -1,18 +1,20 @@
+/* eslint-disable react/prop-types */
+
 import { useContext, useRef } from "react";
 import doctorsImg from "../../assets/doctors.svg";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-const AddService = () => {
+const EditModal = ({service, setIsModalOpen, setServices}) => {
   const { user } = useContext(AuthContext);
   const formRef = useRef();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Get form data
-    const form = new FormData(e.currentTarget);
+    const form = new FormData(formRef.current);
 
     const imgURL = form.get("imgURL");
     const serviceName = form.get("serviceName");
@@ -24,44 +26,56 @@ const AddService = () => {
     const providerImage = user?.photoURL;
     const timeStamp = Date.now();
 
-    // Send data to backend
-    axios
-      .post(`${import.meta.env.VITE_URL}/services`, {
-        imgURL,
-        serviceName,
-        price,
-        serviceArea,
-        description,
-        providerImage,
-        providerEmail,
-        providerName,
-        timeStamp
-      })
-      .then((res) => {
-        const result = res.data;
-        if (result && result.insertedId) {
-          toast.success("Data added successfully!");
-          formRef.current.reset();
-          
-        } else {
-          toast.error("Failed to add data.");
+    const updatedService = {
+      imgURL,
+      serviceName,
+      price,
+      serviceArea,
+      description,
+      providerImage,
+      providerEmail,
+      providerName,
+      timeStamp
+    };
+
+    try {
+      const res = await axios.put(
+        `${import.meta.env.VITE_URL}/services/${service?._id}`,
+        updatedService,
+        {
+          withCredentials: true
         }
-      })
-      .catch((error) => {
-        toast.error("An error occurred while adding data: " + error.message);
-      });
+      );
+
+      if (res.data?.acknowledged) {
+        toast.success("Data Updated successfully!");
+        setIsModalOpen(false);
+        setServices((prevServices) =>
+          prevServices.map((serv) =>
+            serv._id === service?._id ? { ...serv, ...updatedService } : serv
+          )
+        );
+      } else {
+        toast.error("Failed to update data.");
+      }
+    } catch (error) {
+      console.error("Error updating service:", error);
+      toast.error("An error occurred while updating data.");
+    }
   };
 
   return (
-    <div className="mt-16 pt-10">
+    <div className="fixed left-0 top-0 flex justify-center items-center  w-full h-full z-10 bg-black/70">
+        <div className="mt-16 pt-10 z-50">
       <div className="container max-w-screen-lg mx-auto">
         <div>
-          <div className="bg-white dark:bg-button_bg/50 dark:text-white/50 rounded-lg shadow-lg p-4 px-4 md:p-8 mb-6">
+          <div className="bg-white dark:bg-button_bg dark:text-white/50 rounded-lg shadow-lg p-4 px-4 md:p-8 mb-6 relative">
+            <button onClick={()=>setIsModalOpen(false)} className="bg-red-500 text-white absolute right-4 top-4 rounded-full size-5 flex justify-center items-center text-sm font-bold cursor-pointer">x</button>
             <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
               <div className="text-gray-600">
                 <p className="font-medium text-lg">Add Services</p>
                 <p>Please fill out all the fields.</p>
-                <div className="mt-16">
+                <div className="mt-16 hidden md:block">
                   <img className="w-full h-60" src={doctorsImg} alt="" />
                 </div>
               </div>
@@ -77,6 +91,7 @@ const AddService = () => {
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-black dark:text-white dark:bg-white/10"
                       placeholder="Service name"
                       required
+                      defaultValue={service?.serviceName}
                     />
                   </div>
 
@@ -88,6 +103,7 @@ const AddService = () => {
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-black dark:bg-white/10 dark:text-white"
                       placeholder="Image url"
                       required
+                      defaultValue={service?.imgURL}
                     />
                   </div>
 
@@ -100,6 +116,7 @@ const AddService = () => {
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-black dark:bg-white/10 dark:text-white"
                       placeholder="Service area"
                       required
+                      defaultValue={service?.serviceArea}
                     />
                   </div>
 
@@ -112,6 +129,7 @@ const AddService = () => {
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-black dark:bg-white/10 dark:text-white"
                       placeholder="Price"
                       required
+                      defaultValue={service?.price}
                     />
                   </div>
 
@@ -125,6 +143,7 @@ const AddService = () => {
                       cols="30"
                       rows="10"
                       required
+                      defaultValue={service?.description}
                     ></textarea>
                   </div>
 
@@ -145,7 +164,8 @@ const AddService = () => {
         </div>
       </div>
     </div>
+    </div>
   );
 };
 
-export default AddService;
+export default EditModal;
