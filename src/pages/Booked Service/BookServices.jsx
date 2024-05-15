@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import axios from "axios";
 import BookedSignleService from "./BookedSignleService";
 import { Helmet } from "react-helmet";
+import TableLoader from "../../utility/TableLoader";
 
 
 const BookedServices = () => {
@@ -36,7 +37,10 @@ const BookedServices = () => {
   if (loading && !error) {
     content = (
       <>
-        <h2>Loading</h2>
+         <TableLoader />
+         <TableLoader />
+         <TableLoader />
+
       </>
     );
   }
@@ -101,7 +105,7 @@ const BookedServices = () => {
                   </tr>
                 </thead>
                 <tbody>
-                 {content}
+                {content}
                 </tbody>
               </table>
             </div>

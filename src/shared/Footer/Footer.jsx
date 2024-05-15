@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import playStore from "../../assets/playstore.webp";
 import appStore from "../../assets/appstore.png";
+import { useContext } from "react";
+import { AuthContext } from '../../providers/AuthProvider';
 
 function Footer() {
+  const {loading} = useContext(AuthContext);
   return (
-    <footer className="bg-blue-100/20 dark:bg-dark_bg text-black dark:text-white/50 px-4 py-8 mt-10 border-white/10 border-t">
+    <footer className={`bg-blue-100/20 dark:bg-dark_bg text-black dark:text-white/50 px-4 py-8 mt-10 border-white/10 border-t ${loading ? 'mt-60' : ''}`}>
       <div className="max-w-[1170px] mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 ">
           <div>

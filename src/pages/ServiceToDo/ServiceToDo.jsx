@@ -7,6 +7,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import axios from "axios";
 import SigngleServiceTodo from "./SigngleServiceTodo";
 import { Helmet } from "react-helmet";
+import TableLoader from '../../utility/TableLoader'
 
 
 const ServiceToDo = () => {
@@ -38,7 +39,7 @@ const ServiceToDo = () => {
   if (loading && !error) {
     content = (
       <>
-        <h2>Loading</h2>
+       <TableLoader />
       </>
     );
   }

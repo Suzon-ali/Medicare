@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import axios from "axios";
 import MyService from "./MyService";
 import { Helmet } from "react-helmet";
+import TableLoader from "../../utility/TableLoader";
 
 
 const ManageService = () => {
@@ -37,7 +38,8 @@ const ManageService = () => {
   if (loading && !error) {
     content = (
       <>
-        <h2>Loading</h2>
+        <TableLoader />
+        <TableLoader />
       </>
     );
   }

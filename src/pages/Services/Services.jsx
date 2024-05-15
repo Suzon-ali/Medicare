@@ -16,7 +16,7 @@ const Services = () => {
 
   ////pagination
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(5);
+    const [postsPerPage, setPostsPerPage] = useState(6);
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = services.slice(firstPostIndex, lastPostIndex);
