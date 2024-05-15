@@ -69,7 +69,7 @@ const BookingModal = ({service, setServices, setIsBookingModalOpen}) => {
         <div className="mt-16 z-50">
       <div className="container max-w-screen-lg mx-auto">
         <div>
-          <div className="bg-white dark:bg-button_bg dark:text-white/50 rounded-lg shadow-lg p-4 px-4 md:p-8 mb-6 relative">
+          <div className="bg-white dark:bg-button_bg dark:text-white/50 rounded-lg shadow-lg p-4 px-4 md:p-8 mb-6 relative max-h-[90vh] overflow-auto">
             <button onClick={()=>setIsBookingModalOpen(false)} className="bg-red-500 text-white absolute right-4 top-4 rounded-full size-5 flex justify-center items-center text-sm font-bold cursor-pointer">x</button>
             <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
               <div className="text-gray-600">
