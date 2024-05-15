@@ -1,5 +1,17 @@
+import toast from "react-hot-toast";
 import doctorsImg from "../../assets/doctors.svg";
+import { useRef } from "react";
 const Contact = () => {
+
+  const formRef = useRef();
+  const handleNewlaterSubmit = (e) =>{
+    
+    e.preventDefault();
+    toast.success("Email sent");
+    formRef.current.reset();
+  }
+
+
   return (
     <div className="mt-10">
       <div className="container max-w-screen-lg mx-auto">
@@ -17,7 +29,9 @@ const Contact = () => {
                 </div>
               </div>
 
+              
               <div className="lg:col-span-2">
+                <form ref={formRef} onSubmit={handleNewlaterSubmit} >
                 <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 ">
                   <div className="md:col-span-5 ">
                     <label htmlFor="full_name">Your Full Name</label>
@@ -25,18 +39,21 @@ const Contact = () => {
                       type="text"
                       name="fullName"
                       id="full_name"
+                      required
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-black dark:text-white dark:bg-white/10"
                       placeholder="Full Name"
+                    
                     />
                   </div>
 
                   <div className="md:col-span-5">
                     <label htmlFor="email">Your Email</label>
                     <input
-                      type="text"
+                      type="email"
                       name="email"
                       className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-black dark:bg-white/10 dark:text-white"
                       placeholder="Email"
+                      required
                     />
                   </div>
 
@@ -50,18 +67,21 @@ const Contact = () => {
                       cols="30"
                       rows="10"
                       placeholder="Query"
+                      required
                     ></textarea>
                   </div>
 
                   <div className="md:col-span-5 text-right">
                     <div className="inline-flex items-end">
-                      <button className="dark:bg-blue-500 bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      <button type="submit" className="dark:bg-blue-500 bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Submit
                       </button>
                     </div>
                   </div>
                 </div>
+                </form>
               </div>
+           
             </div>
           </div>
         </div>
