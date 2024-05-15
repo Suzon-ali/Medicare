@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { AuthContext } from '../../providers/AuthProvider';
 import axios from "axios";
 import BookedSignleService from "./BookedSignleService";
+import { Helmet } from "react-helmet";
 
 
 const BookedServices = () => {
@@ -66,6 +67,12 @@ const BookedServices = () => {
 
   return (
     <div className="mt-16 pt-10 text-black dark:text-white/70 min-h-[50dvh]">
+      
+      <Helmet>
+        <title>Medicare | Booked Services</title>
+      </Helmet>
+
+
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div>
