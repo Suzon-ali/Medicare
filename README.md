@@ -1,9 +1,11 @@
-# React + Vite
+**Medicare service**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site: [Medicare](https://medicare-assignment11.netlify.app/)
 
-Currently, two official plugins are available:
+### Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# b9a11-client-side-Suzon-ali
+- **Service Details**: View detailed information about various services including service provider details, service location, description, price, and an option to book the service.
+- **Service Listings**: Explore a wide range of services listed by different service providers.
+- **User Authentication**: Sign up and log in to your account to access personalized features such as saving favorite services and booking history.
+- **Search Functionality**: Easily search for specific services based on keywords, location, or service category.
+- **Responsive Design**: Enjoy a seamless browsing experience across various devices including desktops, tablets, and mobile phones.

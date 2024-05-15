@@ -39,8 +39,6 @@ const SignleService = () => {
     providerImage,
   } = service || {};
 
-  console.log(serviceName);
-
   return (
     <>
       <Helmet>
