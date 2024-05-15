@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Search from "./Search";
 import Pagination from "./Pagination";
+import Simmer from "../../utility/Simmer";
 
 const Services = () => {
 
@@ -52,7 +53,12 @@ const Services = () => {
   if (loading && !error) {
     content = (
       <>
-        <h2>Loading</h2>
+        <Simmer />
+        <Simmer />
+        <Simmer />
+        <Simmer />
+        <Simmer />
+        <Simmer />
       </>
     );
   }

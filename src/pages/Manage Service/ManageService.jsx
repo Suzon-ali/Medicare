@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { AuthContext } from '../../providers/AuthProvider';
 import axios from "axios";
 import MyService from "./MyService";
+import { Helmet } from "react-helmet";
 
 
 const ManageService = () => {
@@ -16,7 +17,7 @@ const ManageService = () => {
 
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_URL}/services?email=${email}`, {
+    axios.get(`${import.meta.env.VITE_URL}/services?providerEmail=${email}`, {
       withCredentials: true,
     })
     .then(res => {
@@ -67,6 +68,11 @@ const ManageService = () => {
 
   return (
     <div className="max-w-[1170px] mx-auto  mt-16 pt-10 text-black dark:text-white/70 min-h-[70dvh]">
+
+      <Helmet>
+        <title>Medicare | Manage Services</title>
+      </Helmet>
+
       <div className="mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div>

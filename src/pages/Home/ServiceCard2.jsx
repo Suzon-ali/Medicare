@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { Link } from "react-router-dom";
+import TruncateText from "../../utility/TruncateText";
 
 const ServiceCard2 = ({ service }) => {
   const {_id, serviceName, imgURL, price, serviceArea, description, providerName, providerImage } = service || {};
@@ -32,7 +33,7 @@ const ServiceCard2 = ({ service }) => {
               ></path>
             </svg>
           </span>
-          <p className=" lg:pr-20">{description}</p>
+          <p className=" lg:pr-20"><TruncateText text={description} /></p>
         </div>
         <div className="-bottom-5 right-0 text-blue-400 p-2">
             Location: {serviceArea}

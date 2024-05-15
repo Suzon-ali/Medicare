@@ -23,7 +23,7 @@ const BookingModal = ({service, setServices, setIsBookingModalOpen}) => {
         const providerEmail = service.providerEmail;
         const providerName = service.providerName;
         const price = service.price;
-        const userEMail = user?.email;
+        const userEmail = user?.email;
         const userName = user.displayName;
         const serviceDate = form.get('date')
         const instructions = form.get('instructions')
@@ -36,7 +36,7 @@ const BookingModal = ({service, setServices, setIsBookingModalOpen}) => {
         providerEmail, 
         providerName, 
         price,
-        userEMail, 
+        userEmail, 
         userName , 
         serviceDate, 
         instructions, 

@@ -54,6 +54,7 @@ const MyService = ({ service, setServices }) => {
 
   return (
     <tr>
+      
       <td className="px-5 py-5 border-b border-gray-200 dark:border-white/20 bg-white  dark:text-white/50 dark:bg-button_bg/90 text-sm">
         <div className="flex">
           <div className="flex-shrink-0 w-10 h-10">

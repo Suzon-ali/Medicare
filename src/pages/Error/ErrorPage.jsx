@@ -2,6 +2,7 @@
 
 import { Link } from 'react-router-dom';
 import './ErrorPage.css'
+import { Helmet } from 'react-helmet';
 
 const ErrorPage = ({message,setIsErrorPage }) => {
 
@@ -9,6 +10,9 @@ const ErrorPage = ({message,setIsErrorPage }) => {
 
   return (
     <section className="page_404 mt-20">
+      <Helmet>
+        <title>404 : Page Not Found</title>
+      </Helmet>
       <div className="container mx-auto ">
         <div className="row">
           <div className="col-sm-12 ">
