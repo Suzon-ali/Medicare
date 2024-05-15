@@ -14,7 +14,7 @@ const PopularServices = () => {
 
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_URL}/popular`,)
+    axios.get(`${import.meta.env.VITE_URL}/services`,)
     .then(res => {
       console.log(res);
       setServices(res.data);
