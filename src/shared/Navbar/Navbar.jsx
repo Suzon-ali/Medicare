@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,8 +30,6 @@ const Navbar = () => {
     document.documentElement.setAttribute("class", oldTheme);
   }, [theme]);
 
-  
-
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -51,16 +50,16 @@ const Navbar = () => {
 
   // Function to handle menu close
   const handleMenuClose = () => {
-    if(isMenuOpen === true){
+    if (isMenuOpen === true) {
       setIsMenuOpen(false);
     }
   };
 
   //Function to handle dashboard click
 
-  const handleDashboardClick = () =>{
+  const handleDashboardClick = () => {
     setIsDashboardClicked(!isDashboardClicked);
-  }
+  };
 
   // Function to handle user sign out
   const handleSignOut = () => {
@@ -78,12 +77,18 @@ const Navbar = () => {
       <div className="max-w-[1170px] mx-auto flex justify-between items-center">
         <div>
           <Link to={"/"} className="font-bold text-2xl">
-            <span className="">Medi</span><span className="text-dark_button">Care</span>
+            <span className="">Medi</span>
+            <span className="text-dark_button">Care</span>
           </Link>
         </div>
-        <div className={`absolute ${isMenuOpen ===false ? '-top-72' : 'top-16'} left-0 py-5 w-full md:w-auto md:py-0 md:static md:flex gap-2 bg-white dark:bg-dark_bg border-b dark:border-white/10 md:border-none`}>
+        <div
+          className={`absolute ${
+            isMenuOpen === false ? "-top-72" : "top-16"
+          } left-0 py-5 w-full md:w-auto md:py-0 md:static md:flex gap-2 bg-white dark:bg-dark_bg border-b dark:border-white/10 md:border-none`}
+        >
           <div className="flex items-center justify-between md:justify-center mx-4 md:gap-5 ">
-            <Link onClick={handleMenuClose}
+            <Link
+              onClick={handleMenuClose}
               to={"/"}
               className={`py-2 px-3 text-black dark:text-white rounded-lg ${
                 pathname === "/" ? "bg-gray-800 text-white" : ""
@@ -92,7 +97,8 @@ const Navbar = () => {
               Home
             </Link>
 
-            <Link onClick={handleMenuClose}
+            <Link
+              onClick={handleMenuClose}
               to={"/services"}
               className={`py-2 px-3 text-black dark:text-white rounded-lg ${
                 pathname === "/services" ? "bg-gray-800 text-white" : ""
@@ -103,7 +109,10 @@ const Navbar = () => {
 
             {user && (
               <div ref={dropdownRef} className="relative">
-                <div onClick={handleDashboardClick} className=" px-4 py-2 rounded-lg hover:bg-gray-800 cursor-pointer hover:text-white flex items-center gap-1 ">
+                <div
+                  onClick={handleDashboardClick}
+                  className=" px-4 py-2 rounded-lg hover:bg-gray-800 cursor-pointer hover:text-white flex items-center gap-1 "
+                >
                   Dashboard{" "}
                   <span>
                     <svg
@@ -120,33 +129,41 @@ const Navbar = () => {
                     </svg>
                   </span>
                 </div>
-                {isDashboardClicked && <div onClick={()=>{setIsDashboardClicked(false); setIsMenuOpen(false)}} className="dropdown flex flex-col absolute bg-[#0d1426] text-nowrap top-12 md:w-40 border border-1 border-gray-500 rounded-lg overflow-hidden">
-                  <Link
-                    className="p-2 hover:bg-gray-800 text-white"
-                    to={"/add-service"}
+                {isDashboardClicked && (
+                  <div
+                    onClick={() => {
+                      setIsDashboardClicked(false);
+                      setIsMenuOpen(false);
+                    }}
+                    className="dropdown flex flex-col absolute bg-[#0d1426] text-nowrap top-12 md:w-40 border border-1 border-gray-500 rounded-lg overflow-hidden"
                   >
-                    Add Service
-                  </Link>
-                  <Link
-                    className="p-2 hover:bg-gray-800 text-white "
-                    to={"/manage-service"}
-                  >
-                    Manage Service
-                  </Link>
+                    <Link
+                      className="p-2 hover:bg-gray-800 text-white"
+                      to={"/add-service"}
+                    >
+                      Add Service
+                    </Link>
+                    <Link
+                      className="p-2 hover:bg-gray-800 text-white "
+                      to={"/manage-service"}
+                    >
+                      Manage Service
+                    </Link>
 
-                  <Link
-                    className="p-2 hover:bg-gray-800 text-white "
-                    to={"/booked-services"}
-                  >
-                    Booked Service
-                  </Link>
-                  <Link
-                    className="p-2 hover:bg-gray-800 text-white "
-                    to={"/service-to-do"}
-                  >
-                    Service To Do
-                  </Link>
-                </div>}
+                    <Link
+                      className="p-2 hover:bg-gray-800 text-white "
+                      to={"/booked-services"}
+                    >
+                      Booked Service
+                    </Link>
+                    <Link
+                      className="p-2 hover:bg-gray-800 text-white "
+                      to={"/service-to-do"}
+                    >
+                      Service To Do
+                    </Link>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -191,28 +208,74 @@ const Navbar = () => {
               </Link>
             ) : (
               <>
-              <div
-                className="rounded-full size-10 overflow-hidden"
-              >
-                <img className="rounded-full cursor-pointer" src={user?.photoURL} alt="" />
-              </div>
+                <div className="rounded-full size-10 overflow-hidden">
+                  <img data-tooltip-id="my-tooltip-1"
+                    className="rounded-full cursor-pointer"
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                </div>
+                  
 
-              <button
-                onClick={handleSignOut}
-                className="py-2 px-[20px] bg-black dark:bg-dark_button text-white rounded-full cursor-pointer"
-              >
-                Logout
-              </button>
+                <button
+                  onClick={handleSignOut}
+                  className="py-2 px-[20px] bg-black dark:bg-dark_button text-white rounded-full cursor-pointer"
+                >
+                  Logout
+                </button>
               </>
-              
             )}
           </div>
         </div>
 
         <div onClick={handleMenu} className="md:hidden">
-          Menu
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+            
+          >
+            <path
+              d="M21.4883 10.3792H7.48828"
+              stroke="black"
+              className="dark:stroke-white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M21.4883 6.37915H3.48828"
+              className="dark:stroke-white"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M21.4883 14.3792H3.48828"
+              className="dark:stroke-white"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M21.4883 18.3792H7.48828"
+              className="dark:stroke-white"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </div>
-
+        <ReactTooltip
+        id="my-tooltip-1"
+        place="bottom"
+        content={user?.displayName}
+      />
       </div>
     </div>
   );

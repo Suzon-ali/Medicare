@@ -202,7 +202,7 @@ function Login() {
             </p>
           </form>
         </div>
-        <div className="lg:w-1/2">
+        <div className="hidden lg:block lg:w-1/2">
           <img data-aos="fade-up" className="w-" src={loginAnimation} alt="" />
         </div>
       </div>

@@ -61,8 +61,8 @@ const AddService = () => {
               <div className="text-gray-600">
                 <p className="font-medium text-lg">Add Services</p>
                 <p>Please fill out all the fields.</p>
-                <div className="mt-16">
-                  <img className="w-full h-60" src={doctorsImg} alt="" />
+                <div className="mt-4 lg:mt-16 ">
+                  <img  className="w-full h-60 hidden lg:block" src={doctorsImg} alt="" />
                 </div>
               </div>
 

@@ -4,6 +4,7 @@ import ServiceCard from "./ServiceCard";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import Simmer2 from "../../utility/Shimmer2";
 
 const PopularServices = () => {
   
@@ -31,7 +32,14 @@ const PopularServices = () => {
   if (loading && !error) {
     content = (
       <>
-        <h2>Loading</h2>
+         <Simmer2 />
+         <Simmer2 />
+         <Simmer2 />
+         <Simmer2 />
+         <Simmer2 />
+         <Simmer2 />
+         <Simmer2 />
+         <Simmer2 />
       </>
     );
   }
@@ -73,6 +81,8 @@ const PopularServices = () => {
             ensuring peace of mind and optimal well-being for individuals.
           </p>
         </div>
+
+       
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
           {content}
