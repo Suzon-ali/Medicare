@@ -82,7 +82,7 @@ const MyService = ({ service, setServices }) => {
           {newDate}
         </p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 dark:border-white/20 bg-white dark:bg-blue-300 text-sm space-x-2 dark:text-white/50 dark:bg-button_bg/90 ">
+      <td className="px-5 py-5 border-b border-gray-200 h-full dark:border-white/20 bg-white dark:bg-blue-300 text-sm space-x-2 dark:text-white/50 dark:bg-button_bg/90">
         <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight ">
           <span
             aria-hidden

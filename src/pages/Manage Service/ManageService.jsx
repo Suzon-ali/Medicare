@@ -66,8 +66,8 @@ const ManageService = () => {
 
 
   return (
-    <div className="mt-16 pt-10 text-black dark:text-white/70 min-h-[50dvh]">
-      <div className="container mx-auto px-4 sm:px-8">
+    <div className="max-w-[1170px] mx-auto  mt-16 pt-10 text-black dark:text-white/70 min-h-[70dvh]">
+      <div className="mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div>
             <h2 className="text-2xl font-semibold leading-tight">

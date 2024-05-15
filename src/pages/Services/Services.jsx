@@ -2,28 +2,49 @@ import { Helmet } from "react-helmet";
 import ServiceCard2 from "../Home/ServiceCard2";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Search from "./Search";
+import Pagination from "./Pagination";
 
 const Services = () => {
 
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchText, setSearchText] = useState('');
 
+
+  ////pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(5);
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = services.slice(firstPostIndex, lastPostIndex);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_URL}/services`, {
-      withCredentials: true,
-    })
-    .then(res => {
-      console.log(res);
-      setServices(res.data);
-      setLoading(false);
-    })
-    .catch(error => {
-      setError(error);
-      setLoading(false); 
-    });
-  }, []);
+    let query = '';
+    if (searchText !== '') {
+      query = `?serviceName=${searchText.toLowerCase()}`;
+    }
+
+    const fetchServices = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_URL}/services${query}`, {
+          withCredentials: true,
+        });
+        setServices(res.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, [searchText]);
+
   
   //decide what to render
 
@@ -38,14 +59,14 @@ const Services = () => {
   if (!loading && error) {
     content = <div>Error: {error.message}</div>;
   }
-  if (!loading && !error && services.length === 0) {
+  if (!loading && !error && currentPosts.length === 0) {
     content = <div>No Service found.</div>;
   }
-  if (!loading && !error && services.length > 0) {
+  if (!loading && !error && currentPosts.length > 0) {
     content = (
       <>
-        {services &&
-          services.map((service) => {
+        {currentPosts &&
+          currentPosts.map((service) => {
             return (
               <ServiceCard2
               service={service}
@@ -68,9 +89,16 @@ const Services = () => {
             <span className="text-dark_button">Care</span>
           </h1>
 
+          <Search setSearchText={setSearchText} searchText={searchText} />
+
           <div className="grid grid-cols-1  gap-5 mt-10 md:px-10">
           {content}
         </div>
+
+        <Pagination totalPosts={services.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage} />
 
       </div>
     </div>

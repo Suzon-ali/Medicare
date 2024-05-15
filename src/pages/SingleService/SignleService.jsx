@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import BookingModal from "./BookingModal";
+import { Helmet } from "react-helmet";
 
 const SignleService = () => {
   const [service, setService] = useState({});
@@ -41,7 +42,13 @@ const SignleService = () => {
   console.log(serviceName);
 
   return (
+
+    <>
+    <Helmet>
+        <title>Medicare | Service Details</title>
+      </Helmet>
     <div className="bg-gray-100 dark:bg-dark_bg min-h-[80dvh] mt-20 pt-10">
+      
       <div className="max-w-4xl mx-auto py-8">
         <div className="bg-white dark:bg-button_bg/70 dark:text-white/70 rounded-lg shadow-md overflow-hidden">
           <div className="md:flex">
@@ -102,6 +109,7 @@ const SignleService = () => {
 
       {isBookingModalOpen && <BookingModal service={service}  setIsBookingModalOpen={setIsBookingModalOpen} />}
     </div>
+    </>
   );
 };
 

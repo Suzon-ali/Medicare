@@ -6,12 +6,12 @@ const ServiceCard2 = ({ service }) => {
   const {_id, serviceName, imgURL, price, serviceArea, description, providerName, providerImage } = service || {};
 
   return (
-    <div className=" shadow-sm border dark:border-none rounded-lg md:flex overflow-hidden dark:text-white/80 dark:bg-button_bg/40 lg:hover:scale-[103%] transition-transform duration-300">
+    <div className="h-auto shadow-sm border dark:border-none rounded-lg md:flex overflow-hidden dark:text-white/80 dark:bg-button_bg/40 lg:hover:scale-[103%] transition-transform duration-300">
       <div className="w-full md:w-5/12">
-        <img className="w-full h-[300px] object-cover object-top" src={imgURL} alt="" />
+        <img className="w-full h-full object-cover object-top" src={imgURL} alt="" />
        
       </div>
-      <div className="p-3 relative w-full md:w-7/12">
+      <div className="p-3 relative w-full md:w-7/12 ">
         <h3 className="text-lg font-bold text-dark_button">{serviceName}</h3>
         <p >
           <span  className="font-bold">Tk {price}</span>{" "}
@@ -42,7 +42,7 @@ const ServiceCard2 = ({ service }) => {
            <p>{providerName}</p>
         </div>
         <Link to={`/services/${_id}`}>
-          <button className="md:absolute bottom-2 left-1/2 transform -translate-x-1/2 w-11/12 bg-dark_bg dark:bg-dark_button text-white p-2 my-2 rounded-lg w-fullhover:brightness-110">
+          <button className=" w-11/12 bg-dark_bg dark:bg-dark_button text-white p-2 my-2 rounded-lg w-fullhover:brightness-110">
             View Details
           </button>
         </Link>
